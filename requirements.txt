@@ -1,0 +1,7 @@
+pip~=24.1.2
+wheel~=0.43.0
+setuptools~=70.3.0
+certifi~=2024.7.4
+urllib3~=2.2.2
+idna~=3.7
+requests~=2.32.3
