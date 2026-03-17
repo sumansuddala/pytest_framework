@@ -1,0 +1,50 @@
+name: Demo Pipeline with Parameters
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Select Environment"
+        type: choice
+        required: true
+        default: qa
+        options:
+          - qa
+          - stage
+          - prod
+
+      browser:
+        description: "Select Browser"
+        type: choice
+        required: true
+        default: chrome
+        options:
+          - chrome
+          - firefox
+          - edge
+
+  schedule:
+    - cron: '0 2 * * *'   # Runs daily at 2 AM
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    env:
+      # If manual run → take selected input
+      # If scheduled run → fallback to default values
+      ENVIRONMENT: ${{ github.event.inputs.environment || 'qa' }}
+      BROWSER: ${{ github.event.inputs.browser || 'chrome' }}
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Print Selected Values
+        run: |
+          echo "Environment: $ENVIRONMENT"
+          echo "Browser: $BROWSER"
+
+      - name: Example Test Execution
+        run: |
+          echo "Running tests on $ENVIRONMENT using $BROWSER"
