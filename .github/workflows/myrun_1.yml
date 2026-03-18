@@ -24,7 +24,7 @@ on:
           - edge
 
   schedule:
-    - cron: '0 2 * * *'   # Runs daily at 2 AM
+    - cron: '1 * * * *'    # Runs daily at 2 AM
 
 jobs:
   test:
