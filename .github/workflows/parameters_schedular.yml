@@ -19,8 +19,6 @@ on:
         - "qa"
         - "dev"
         - "stage"
-  schedule:
-    - cron: '*/1 * * * *'
 
 permissions:
   contents: read
