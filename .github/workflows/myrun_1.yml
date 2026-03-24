@@ -23,9 +23,6 @@ on:
           - firefox
           - edge
 
-  schedule:
-    - cron: '1 * * * *'    # Runs daily at 2 AM
-
 jobs:
   test:
     runs-on: ubuntu-latest
